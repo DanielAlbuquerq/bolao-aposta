@@ -212,3 +212,17 @@ tbody tr:last-child td {
 .btn-excluir:hover {
     background-color: #c82333;
 }
+
+/* Estilo moderno para os números e o "x" do placar */
+.placar-num {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1e293b;
+}
+
+.placar-x {
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0 2px !important; /* Aproxima o 'x' dos números */
+}

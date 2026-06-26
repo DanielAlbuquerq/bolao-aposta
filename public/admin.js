@@ -10,9 +10,10 @@ async function carregarApostasAdmin() {
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td style="text-align: left;">${aposta.nome}</td>
-                <td>${aposta.gols_br}</td>
-                <td>${aposta.gols_jp}</td>
-                <td><button class="btn-excluir" onclick="deletarAposta(${aposta.id})">Excluir</button></td>
+                <td>${aposta.apelido || ''}</td>
+                <td class="placar-num">${aposta.gols_br}</td>
+                <td class="placar-x">x</td>
+                <td class="placar-num">${aposta.gols_jp}</td>
             `;
             tbody.appendChild(tr);
         });

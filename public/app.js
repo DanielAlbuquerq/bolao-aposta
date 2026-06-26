@@ -10,11 +10,12 @@ async function carregarApostas() {
         
         apostas.forEach(aposta => {
             const tr = document.createElement('tr');
-            tr.innerHTML = `
+          tr.innerHTML = `
                 <td style="text-align: left;">${aposta.nome}</td>
                 <td>${aposta.apelido || ''}</td>
-                <td>${aposta.gols_br}</td>
-                <td>${aposta.gols_jp}</td>
+                <td class="placar-num">${aposta.gols_br}</td>
+                <td class="placar-x">x</td>
+                <td class="placar-num">${aposta.gols_jp}</td>
             `;
             tbody.appendChild(tr);
         });
