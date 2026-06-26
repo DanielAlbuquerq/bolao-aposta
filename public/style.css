@@ -109,6 +109,9 @@ body {
     color: #666;
 }
 
+/* =========================================
+   RESUMO FINANCEIRO (CARTÕES MODERNOS)
+========================================= */
 .summary {
     display: flex;
     justify-content: space-between;
@@ -117,13 +120,56 @@ body {
 }
 
 .card {
-    background-color: #9ab4d6;
     flex: 1;
-    text-align: center;
+    display: flex;
+    align-items: center;
     padding: 15px;
-    border-radius: 20px;
-    color: #000;
-    font-size: 1.1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    color: #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito de flutuação ao passar o mouse */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-right: 12px;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.card-content h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0.9;
+    margin-bottom: 2px;
+}
+
+.card-content p {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+/* Estilo específico para Cota (Azul Esportivo) */
+.card-cota {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+}
+
+/* Estilo específico para Arrecadado (Dourado/Troféu) */
+.card-arrecadado {
+    background: linear-gradient(135deg, #b45309, #f59e0b);
 }
 
 .participants-section {
