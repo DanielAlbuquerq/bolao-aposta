@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding-bottom: 20px;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 4px solid #333;
+}
+
+.header h1 {
+    color: #e65c00;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.header h2 {
+    color: #e65c00;
+    font-size: 2rem;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.match-info {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.match-info .date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.teams {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team img {
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.vs {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    color: #666;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 15px;
+}
+
+.card {
+    background-color: #9ab4d6;
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    border-radius: 20px;
+    color: #000;
+    font-size: 1.1rem;
+}
+
+.participants-section {
+    padding: 0 20px;
+}
+
+.participants-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.placar-badge {
+    background-color: #ebd5c9;
+    color: #8b3a00;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #9ab4d6;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #cfd8dc;
+}
+
+th img {
+    vertical-align: middle;
+}
+
+td {
+    font-size: 1rem;
+}
+
+/* Painel Admin */
+.admin-panel {
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.admin-panel form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.admin-panel input {
+    flex: 1 1 200px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.admin-panel button {
+    flex: 1 1 100%;
+    padding: 10px;
+    background: #e65c00;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.admin-panel button:hover {
+    background: #cc5200;
+}
+
+.btn-excluir {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.btn-excluir:hover {
+    background-color: #c82333;
+}

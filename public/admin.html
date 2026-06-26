@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin - Bolão</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header" style="background: #333;">
+            <h1 style="color: #fff; font-size: 1.5rem;">Painel do Administrador</h1>
+            <a href="/" style="color: #fff;">Ver tela do público</a>
+        </header>
+
+        <section class="admin-panel">
+            <h3>Adicionar Nova Aposta</h3>
+            <form id="form-aposta">
+                <input type="text" id="nome" placeholder="Nome do Apostador" required>
+                <input type="text" id="apelido" placeholder="Apelido (Opcional)">
+                <input type="number" id="gols-br" placeholder="Gols Brasil" required min="0">
+                <input type="number" id="gols-jp" placeholder="Gols Japão" required min="0">
+                <button type="submit">Registrar Aposta</button>
+            </form>
+        </section>
+
+        <section class="participants-section">
+            <h3>Gerenciar Apostas Cadastradas</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>BR</th>
+                            <th>JP</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-admin">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <script src="admin.js"></script>
+</body>
+</html>

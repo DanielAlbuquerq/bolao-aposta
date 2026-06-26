@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolão Luís Gomes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Bolão</h1>
+            <h2>Luís Gomes</h2>
+        </header>
+
+        <section class="match-info">
+            <p class="date">Copa do Mundo da FIFA 2026™ - Seg., 29/06, 14:00</p>
+            <div class="teams">
+                <div class="team">
+                    <img src="https://flagcdn.com/w80/br.png" alt="Brasil">
+                    <span>Brasil</span>
+                </div>
+                <div class="vs">
+                    <span>x</span>
+                    <small>Segunda rodada</small>
+                </div>
+                <div class="team">
+                    <img src="https://flagcdn.com/w80/jp.png" alt="Japão">
+                    <span>Japão</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="summary">
+            <div class="card">
+                <h3>Valor Cota:</h3>
+                <p>R$ <span id="valor-cota">10,00</span></p>
+            </div>
+            <div class="card">
+                <h3>Valor Arrecadado:</h3>
+                <p>R$ <span id="valor-arrecadado">0,00</span></p>
+            </div>
+        </section>
+
+        <section class="participants-section">
+            <div class="participants-header">
+                <h3>Total Participantes: <span id="total-participantes">0</span></h3>
+                <div class="placar-badge">Placar</div>
+            </div>
+            
+            <div class="table-responsive">
+                <table id="tabela-bolao">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Apelido</th>
+                            <th><img src="https://flagcdn.com/w40/br.png" alt="BR"></th>
+                            <th><img src="https://flagcdn.com/w40/jp.png" alt="JP"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-apostas">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
