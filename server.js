@@ -1,51 +1,52 @@
 const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const { createClient } = require('@supabase/supabase-js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Configuração do Supabase (Lendo as chaves ocultas do Render)
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); 
-
-const db = new sqlite3.Database('./bolao.db', (err) => {
-    if (err) console.error(err.message);
-    console.log('Conectado ao banco de dados SQLite.');
-});
-
-db.run(`CREATE TABLE IF NOT EXISTS apostas (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
-    apelido TEXT,
-    gols_br INTEGER NOT NULL,
-    gols_jp INTEGER NOT NULL
-)`);
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Rota para LER todas as apostas
-app.get('/api/apostas', (req, res) => {
-    db.all(`SELECT * FROM apostas ORDER BY id ASC`, [], (err, rows) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json(rows);
-    });
+app.get('/api/apostas', async (req, res) => {
+    const { data, error } = await supabase
+        .from('apostas')
+        .select('*')
+        .order('id', { ascending: true });
+
+    if (error) return res.status(500).json({ error: error.message });
+    res.json(data);
 });
 
 // Rota para SALVAR nova aposta
-app.post('/api/apostas', (req, res) => {
+app.post('/api/apostas', async (req, res) => {
     const { nome, apelido, gols_br, gols_jp } = req.body;
-    const query = `INSERT INTO apostas (nome, apelido, gols_br, gols_jp) VALUES (?, ?, ?, ?)`;
     
-    db.run(query, [nome, apelido, gols_br, gols_jp], function(err) {
-        if (err) return res.status(500).json({ error: err.message });
-        res.status(201).json({ id: this.lastID });
-    });
+    const { data, error } = await supabase
+        .from('apostas')
+        .insert([{ nome, apelido, gols_br, gols_jp }])
+        .select();
+        
+    if (error) return res.status(500).json({ error: error.message });
+    res.status(201).json({ id: data[0].id });
 });
 
-// NOVA ROTA: Para DELETAR uma aposta pelo ID
-app.delete('/api/apostas/:id', (req, res) => {
+// Rota para DELETAR uma aposta pelo ID
+app.delete('/api/apostas/:id', async (req, res) => {
     const id = req.params.id;
-    db.run(`DELETE FROM apostas WHERE id = ?`, id, function(err) {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Aposta excluída com sucesso" });
-    });
+    
+    const { error } = await supabase
+        .from('apostas')
+        .delete()
+        .eq('id', id);
+
+    if (error) return res.status(500).json({ error: error.message });
+    res.json({ message: "Aposta excluída com sucesso" });
 });
 
 app.listen(PORT, () => {
