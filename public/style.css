@@ -20,23 +20,57 @@ body {
     padding-bottom: 20px;
 }
 
-.header {
+/* =========================================
+   CABEÇALHO FUTEBOLÍSTICO (GRAMADO)
+========================================= */
+.header-futebol {
+    /* Cria um padrão de listras verdes imitando um gramado cortado */
+    background: repeating-linear-gradient(
+        45deg,
+        #15803d, /* Verde escuro */
+        #15803d 20px,
+        #166534 20px, /* Verde um pouco mais escuro */
+        #166534 40px
+    );
     text-align: center;
-    padding: 20px;
-    border-bottom: 4px solid #333;
+    padding: 25px 20px;
+    border-bottom: 5px solid #facc15; /* Linha amarela na base (Brasil) */
+    border-radius: 0 0 15px 15px; /* Arredonda as pontas de baixo */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.header h1 {
-    color: #e65c00;
-    font-size: 2.5rem;
+.titulo-container h1 {
+    color: #facc15; /* Amarelo ouro */
+    font-size: 2.8rem;
     text-transform: uppercase;
-    text-shadow: 1px 1px 0 #000;
+    font-style: italic; /* Dá sensação de movimento/esporte */
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    margin-bottom: -5px; /* Aproxima o título do subtítulo */
 }
 
-.header h2 {
-    color: #e65c00;
-    font-size: 2rem;
-    text-shadow: 1px 1px 0 #000;
+.titulo-container h2 {
+    color: #ffffff; /* Branco */
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+/* Ajuste do texto do WhatsApp para brilhar no fundo verde */
+.whatsapp-container {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.header-futebol .whatsapp-text {
+    font-size: 0.95rem;
+    color: #f8fafc; /* Texto branco agora para contrastar com o verde */
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .match-info {
@@ -225,4 +259,38 @@ tbody tr:last-child td {
     font-weight: 600;
     font-size: 0.9rem;
     padding: 0 2px !important; /* Aproxima o 'x' dos números */
+}
+
+/* Container do botão de WhatsApp no Header */
+.whatsapp-container {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espaço entre o texto e o botão */
+}
+
+.whatsapp-text {
+    font-size: 0.95rem;
+    color: #334155;
+    font-weight: 600;
+}
+
+/* Estilo do Botão Moderno */
+.btn-whatsapp {
+    background-color: #25D366; /* Verde oficial do WhatsApp */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    background-color: #128C7E; /* Verde mais escuro no hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(37, 211, 102, 0.4);
 }
