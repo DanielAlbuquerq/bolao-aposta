@@ -112,32 +112,54 @@ body {
     font-size: 1.2rem;
 }
 
+/* Container da Tabela com visual de "Cartão" moderno */
 .table-responsive {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     overflow-x: auto;
+    margin-top: 15px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #9ab4d6;
 }
 
-th, td {
-    border: 1px solid #000;
-    padding: 10px;
-    text-align: center;
-}
-
+/* Cabeçalho da Tabela modernizado */
 th {
-    background-color: #cfd8dc;
+    background-color: #f8fafc;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 16px 10px;
+    text-align: center;
+    border-bottom: 2px solid #e2e8f0;
 }
 
-th img {
-    vertical-align: middle;
-}
-
+/* Linhas e Células */
 td {
+    padding: 16px 10px;
+    text-align: center;
     font-size: 1rem;
+    color: #334155;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+/* Efeito Hover interativo nas linhas */
+tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Remove a linha da última aposta para um acabamento limpo */
+tbody tr:last-child td {
+    border-bottom: none;
 }
 
 /* Painel Admin */
