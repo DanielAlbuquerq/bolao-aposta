@@ -25,14 +25,22 @@ app.get('/api/apostas', async (req, res) => {
 
 // Rota para SALVAR nova aposta
 app.post('/api/apostas', async (req, res) => {
-    const { nome, apelido, gols_br, gols_jp } = req.body;
+    // Pegamos os dados e forçamos os gols a serem números inteiros (parseInt)
+    const nome = req.body.nome;
+    const apelido = req.body.apelido;
+    const gols_br = parseInt(req.body.gols_br, 10);
+    const gols_jp = parseInt(req.body.gols_jp, 10);
     
     const { data, error } = await supabase
         .from('apostas')
         .insert([{ nome, apelido, gols_br, gols_jp }])
         .select();
         
-    if (error) return res.status(500).json({ error: error.message });
+    if (error) {
+        // Isso vai imprimir o erro exato no painel do Render para facilitar!
+        console.error("Erro do Supabase:", error); 
+        return res.status(500).json({ error: error.message });
+    }
     res.status(201).json({ id: data[0].id });
 });
 
