@@ -340,3 +340,40 @@ tbody tr:last-child td {
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(37, 211, 102, 0.4);
 }
+
+/* =========================================
+   BOTÕES DE AÇÃO (PIX E WHATSAPP)
+========================================= */
+.acoes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Espaço entre o botão pix e o whatsapp */
+    margin-top: 20px;
+}
+
+/* Estilo do Botão Pix */
+.btn-pix {
+    background-color: #32bcad; /* Cor que lembra o logo do Pix */
+    color: #ffffff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(50, 188, 173, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-pix:hover {
+    background-color: #28998c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(50, 188, 173, 0.4);
+}
+
+/* Ajuste no container do WhatsApp para remover a margem que não precisa mais */
+.whatsapp-container {
+    margin-top: 0; 
+}

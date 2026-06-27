@@ -29,4 +29,30 @@ async function carregarApostas() {
     }
 }
 
+// ==========================================
+// FUNÇÃO DO BOTÃO PIX
+// ==========================================
+document.getElementById('btn-pix').addEventListener('click', function() {
+    // COLOQUE SUA CHAVE PIX DENTRO DAS ASPAS ABAIXO:
+    const chavePix = "11964548597"; 
+    
+    navigator.clipboard.writeText(chavePix).then(() => {
+        // Efeito visual quando copia com sucesso
+        const btn = document.getElementById('btn-pix');
+        const textoOriginal = btn.innerHTML;
+        
+        btn.innerHTML = "✅ Chave Copiada!";
+        btn.style.backgroundColor = "#166534"; // Fica verde escuro
+
+        // Volta ao normal depois de 3 segundos
+        setTimeout(() => {
+            btn.innerHTML = textoOriginal;
+            btn.style.backgroundColor = ""; 
+        }, 3000);
+    }).catch(err => {
+        console.error('Erro ao copiar Pix:', err);
+        alert("Erro ao copiar a chave Pix.");
+    });
+});
+
 carregarApostas();
