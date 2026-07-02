@@ -32,7 +32,7 @@ const mensagem = `⚽ *NOVA APOSTA - BOLÃO* ⚽\n\n` +
                      `📱 *WhatsApp:* ${zap}\n\n` +
                      `*PALPITE PRINCIPAL:*\n` +
                      `🇧🇷 Brasil ${br} x ${no} Noruega 🇳🇴\n\n` +
-                     `*DESEMPATE:*\n` +
+                     `*Desafio:*\n` +
                      `⏱️ Gol no 1º Tempo? *${gol1t}*\n\n` +
                      `_Segue em anexo o meu comprovante Pix!_`;
 
