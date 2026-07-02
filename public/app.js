@@ -1,5 +1,50 @@
-const VALOR_COTA = 10.00;
+const VALOR_COTA = 5.00;
 
+// Sistema de Navegação entre telas
+function navegarPara(idTela) {
+    // Esconde todas as telas
+    document.querySelectorAll('.screen').forEach(tela => {
+        tela.classList.remove('active');
+    });
+    // Mostra a tela selecionada
+    document.getElementById(idTela).classList.add('active');
+    
+    // Se abriu a tela de participantes, atualiza os dados
+    if(idTela === 'tela-participantes') {
+        carregarApostas();
+    }
+}
+
+// Enviar Formulário para o WhatsApp
+document.getElementById('form-user-aposta').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const nome = document.getElementById('bet-nome').value;
+    const zap = document.getElementById('bet-zap').value;
+    const br = document.getElementById('bet-gols-br').value;
+    const no = document.getElementById('bet-gols-no').value;
+    const gols1t = document.getElementById('bet-gols-1t').value;
+    const gols2t = document.getElementById('bet-gols-2t').value;
+    const cartoes = document.getElementById('bet-cartoes').value;
+
+    const mensagem = `⚽ *NOVA APOSTA - BOLÃO LUIS GOMES* ⚽\n\n` +
+                     `👤 *Nome:* ${nome}\n` +
+                     `📱 *WhatsApp:* ${zap}\n\n` +
+                     `*PALPITE PRINCIPAL:*\n` +
+                     `🇧🇷 Brasil ${br} x ${no} Noruega 🇳🇴\n\n` +
+                     `*CRITÉRIOS DE DESEMPATE:*\n` +
+                     `⏱️ Gols no 1º Tempo: ${gols1t}\n` +
+                     `⏱️ Gols no 2º Tempo: ${gols2t}\n` +
+                     `🟨 Total de Cartões: ${cartoes}\n\n` +
+                     `_Segue em anexo o meu comprovante Pix!_`;
+
+    const numeroAdmin = "5511964548597";
+    const url = `https://wa.me/${numeroAdmin}?text=${encodeURIComponent(mensagem)}`;
+    
+    window.open(url, '_blank');
+});
+
+// Buscar dados do banco (Lendo a nova tabela)
 async function carregarApostas() {
     try {
         const resposta = await fetch('/api/apostas');
@@ -10,12 +55,12 @@ async function carregarApostas() {
         
         apostas.forEach(aposta => {
             const tr = document.createElement('tr');
-          tr.innerHTML = `
-                <td style="text-align: left;">${aposta.nome}</td>
-                <td>${aposta.apelido || ''}</td>
-                <td class="placar-num">${aposta.gols_br}</td>
-                <td class="placar-x">x</td>
-                <td class="placar-num">${aposta.gols_jp}</td>
+            tr.innerHTML = `
+                <td style="text-align: left; font-weight: 600;">${aposta.nome}</td>
+                <td class="placar-destaque">${aposta.gols_br} x ${aposta.gols_no}</td>
+                <td>${aposta.gols_1t}</td>
+                <td>${aposta.gols_2t}</td>
+                <td>${aposta.cartoes}</td>
             `;
             tbody.appendChild(tr);
         });
@@ -29,30 +74,4 @@ async function carregarApostas() {
     }
 }
 
-// ==========================================
-// FUNÇÃO DO BOTÃO PIX
-// ==========================================
-document.getElementById('btn-pix').addEventListener('click', function() {
-    // COLOQUE SUA CHAVE PIX DENTRO DAS ASPAS ABAIXO:
-    const chavePix = "11964548597"; 
-    
-    navigator.clipboard.writeText(chavePix).then(() => {
-        // Efeito visual quando copia com sucesso
-        const btn = document.getElementById('btn-pix');
-        const textoOriginal = btn.innerHTML;
-        
-        btn.innerHTML = "✅ Chave Copiada!";
-        btn.style.backgroundColor = "#166534"; // Fica verde escuro
-
-        // Volta ao normal depois de 3 segundos
-        setTimeout(() => {
-            btn.innerHTML = textoOriginal;
-            btn.style.backgroundColor = ""; 
-        }, 3000);
-    }).catch(err => {
-        console.error('Erro ao copiar Pix:', err);
-        alert("Erro ao copiar a chave Pix.");
-    });
-});
-
-carregarApostas();
+carregarApostas(); // Carrega os valores financeiros na tela 1 ao abrir o app

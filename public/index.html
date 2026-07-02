@@ -3,90 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bolão Luís Gomes</title>
+    <title>Bolão Luís Gomes - Brasil x Noruega</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <header class="header header-futebol">
-                    <div class="titulo-container">
-                        <h1>⚽ Bolão</h1>
-                        <h2>Luís Gomes</h2>
-                        <h2>PIX: 11964548597</h2>
-                        <p>daniel mendes</p>
+        <div id="tela-inicio" class="screen active">
+            <header class="header header-futebol">
+                <div class="titulo-container">
+                    <h1>⚽ Bolão</h1>
+                    <h2>Luís Gomes</h2>
+                </div>
+            </header>
+
+            <section class="summary" style="margin-top: 20px;">
+                <div class="card card-cota">
+                    <div class="card-icon">🎟️</div>
+                    <div class="card-content">
+                        <h3>Valor da Cota</h3>
+                        <p>R$ 5,00</p>
                     </div>
-                    
-                    <div class="acoes-container">
-                                    <button id="btn-pix" class="btn-pix">💠 Copiar Chave Pix</button>
-                                    
-                                    <div class="whatsapp-container">
-                                        <span class="whatsapp-text">Enviar placar e comprovante ➔</span>
-                                        <a href="https://wa.me/5511964548597" target="_blank" class="btn-whatsapp">WhatsApp</a>
-                                    </div>
+                </div>
+                <div class="card card-arrecadado">
+                    <div class="card-icon">🏆</div>
+                    <div class="card-content">
+                        <h3>Prêmio Acumulado</h3>
+                        <p>R$ <span id="valor-arrecadado">0,00</span></p>
                     </div>
-
-                    <p>1. 25% ficará com a organização!!</p>
-                    <p>2. Mais de um ganhador prêmio será divido ou sorteado.</p>
-                    <p>3. Nenhum placar acertado, 50% do prêmio será sorteado</p>
-
-        </header>
-
-        <section class="match-info">
-            <p class="date">Copa do Mundo da FIFA 2026™ - Seg., 29/06, 14:00</p>
-            <div class="teams">
-                <div class="team">
-                    <img src="https://flagcdn.com/w80/br.png" alt="Brasil">
-                    <span>Brasil</span>
                 </div>
-                <div class="vs">
-                    <span>x</span>
-                    <small>Segunda rodada</small>
-                </div>
-                <div class="team">
-                    <img src="https://flagcdn.com/w80/jp.png" alt="Japão">
-                    <span>Japão</span>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="summary">
-            <div class="card card-cota">
-                <div class="card-icon">🎟️</div>
-                <div class="card-content">
-                    <h3>Valor da Cota</h3>
-                    <p>R$ <span id="valor-cota">10,00</span></p>
-                </div>
-            </div>
-            <div class="card card-arrecadado">
-                <div class="card-icon">🏆</div>
-                <div class="card-content">
-                    <h3>Prêmio Acumulado</h3>
-                    <p>R$ <span id="valor-arrecadado">0,00</span></p>
+            <section class="action-buttons">
+                <button onclick="navegarPara('tela-aposta')" class="btn-primary">Fazer Aposta</button>
+                <button onclick="navegarPara('tela-participantes')" class="btn-secondary">Ver Participantes</button>
+            </section>
+
+            <section class="">
+                <ol>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </section>
+
+            <section class="rules-section">
+                <ol>
+                    <li>25% ficará com a banca organizadora.</li>
+                    <li>Mais de um ganhador, o prêmio será dividido (Critérios de desempate aplicados).</li>
+                    <li>Nenhum placar acertado, 50% do valor será sorteado.</li>
+                </ol>
+            </section>
+        </div>
+
+        <div id="tela-aposta" class="screen">
+            <header class="header-nav">
+                <button onclick="navegarPara('tela-inicio')" class="btn-voltar">⬅ Voltar</button>
+                <h3>Registrar Palpite</h3>
+            </header>
+            
+            <div class="match-banner">
+                <span>Copa do Mundo - Oitavas de final</span>
+                <div class="teams-mini">
+                    <img src="https://flagcdn.com/w40/br.png" alt="BR"> <b>X</b> <img src="https://flagcdn.com/w40/no.png" alt="NO">
                 </div>
             </div>
-        </section>
 
-        <section class="participants-section">
-            <div class="participants-header">
-                <h3>Total Participantes: <span id="total-participantes">0</span></h3>
-                <div class="placar-badge">Placar</div>
-            </div>
+            <form id="form-user-aposta" class="bet-form">
+                <div class="form-group">
+                    <label>Seu Nome</label>
+                    <input type="text" id="bet-nome" required placeholder="Ex: Daniel de lucinha">
+                </div>
+                
+                <div class="form-group">
+                    <label>Seu WhatsApp</label>
+                    <input type="tel" id="bet-zap" required placeholder="(11) 99999-9999">
+                </div>
+
+                <div class="bet-box">
+                    <h4>Placar do Jogo</h4>
+                    <div class="inputs-inline">
+                        <div>
+                            <label>Brasil</label>
+                            <input type="number" id="bet-gols-br" required min="0">
+                        </div>
+                        <div>
+                            <label>Noruega</label>
+                            <input type="number" id="bet-gols-no" required min="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bet-box">
+                    <h4>Total de Gols no</h4>
+                    <div class="inputs-inline">
+                        <div>
+                            <label>1º Tempo</label>
+                            <input type="number" id="bet-gols-1t" required min="0">
+                        </div>
+                        <div>
+                            <label>2º Tempo</label>
+                            <input type="number" id="bet-gols-2t" required min="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bet-box">
+                    <h4>Cartões</h4>
+                    <div class="form-group">
+                        <label>Total de Cartões no jogo (Amarelos + Vermelhos)</label>
+                        <input type="number" id="bet-cartoes" required min="0">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-whatsapp-send">Enviar Aposta via WhatsApp</button>
+                <p class="form-note">Sua aposta será enviada para o organizador. O registro oficial ocorrerá após a validação do Pix.</p>
+            </form>
+        </div>
+
+        <div id="tela-participantes" class="screen">
+            <header class="header-nav">
+                <button onclick="navegarPara('tela-inicio')" class="btn-voltar">⬅ Voltar</button>
+                <h3>Participantes (<span id="total-participantes">0</span>)</h3>
+            </header>
             
             <div class="table-responsive">
                 <table id="tabela-bolao">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Apelido<br> (Opcional)</th>
-                                <th><img src="https://flagcdn.com/w40/br.png" alt="BR" width="24"></th>
-                                <th>X</th> <th><img src="https://flagcdn.com/w40/jp.png" alt="JP" width="24"></th>
-                            </tr>
-                        </thead>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>BR x NO</th>
+                            <th>1ºT</th>
+                            <th>2ºT</th>
+                            <th>Cartões</th>
+                        </tr>
+                    </thead>
                     <tbody id="lista-apostas">
                         </tbody>
                 </table>
             </div>
-        </section>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>

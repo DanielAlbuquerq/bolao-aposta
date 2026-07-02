@@ -12,10 +12,10 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rota para LER todas as apostas
+// Rota para LER todas as apostas (Vai para a Tela 3)
 app.get('/api/apostas', async (req, res) => {
     const { data, error } = await supabase
-        .from('apostas')
+        .from('apostas_noruega')
         .select('*')
         .order('id', { ascending: true });
 
@@ -23,33 +23,36 @@ app.get('/api/apostas', async (req, res) => {
     res.json(data);
 });
 
-// Rota para SALVAR nova aposta
+// Rota para SALVAR nova aposta (Acesso do Admin)
 app.post('/api/apostas', async (req, res) => {
-    // Pegamos os dados e forçamos os gols a serem números inteiros (parseInt)
     const nome = req.body.nome;
-    const apelido = req.body.apelido;
+    const whatsapp = req.body.whatsapp || '';
     const gols_br = parseInt(req.body.gols_br, 10);
-    const gols_jp = parseInt(req.body.gols_jp, 10);
+    const gols_no = parseInt(req.body.gols_no, 10);
+    const gols_1t = parseInt(req.body.gols_1t, 10);
+    const gols_2t = parseInt(req.body.gols_2t, 10);
+    const cartoes = parseInt(req.body.cartoes, 10);
     
     const { data, error } = await supabase
-        .from('apostas')
-        .insert([{ nome, apelido, gols_br, gols_jp }])
+        .from('apostas_noruega')
+        .insert([{ nome, whatsapp, gols_br, gols_no, gols_1t, gols_2t, cartoes }])
         .select();
         
     if (error) {
-        // Isso vai imprimir o erro exato no painel do Render para facilitar!
         console.error("Erro do Supabase:", error); 
         return res.status(500).json({ error: error.message });
     }
     res.status(201).json({ id: data[0].id });
 });
 
-// Rota para DELETAR uma aposta pelo ID
+
+// Precisamos adicionar opções de deleterar se necessario no futuro, mas por
+// Rota para DELETAR uma aposta pelo ID (Atualizada para o novo jogo)
 app.delete('/api/apostas/:id', async (req, res) => {
     const id = req.params.id;
     
     const { error } = await supabase
-        .from('apostas')
+        .from('apostas_noruega') // <-- Alterado aqui!
         .delete()
         .eq('id', id);
 

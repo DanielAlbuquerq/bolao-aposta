@@ -9,11 +9,15 @@ async function carregarApostasAdmin() {
         apostas.forEach(aposta => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td style="text-align: left;">${aposta.nome}</td>
-                <td>${aposta.apelido || ''}</td>
-                <td class="placar-num">${aposta.gols_br}</td>
-                <td class="placar-x">x</td>
-                <td class="placar-num">${aposta.gols_jp}</td>
+                <td style="text-align: left;">
+                    <strong>${aposta.nome}</strong><br>
+                    <small style="color: #64748b;">${aposta.whatsapp || 'S/N'}</small>
+                </td>
+                <td class="placar-destaque">${aposta.gols_br} x ${aposta.gols_no}</td>
+                <td>${aposta.gols_1t}</td>
+                <td>${aposta.gols_2t}</td>
+                <td>${aposta.cartoes}</td>
+                <td><button class="btn-excluir" onclick="deletarAposta(${aposta.id})">Apagar</button></td>
             `;
             tbody.appendChild(tr);
         });
@@ -24,11 +28,16 @@ async function carregarApostasAdmin() {
 
 document.getElementById('form-aposta').addEventListener('submit', async (e) => {
     e.preventDefault();
+    
+    // Recolhe todos os novos campos
     const novaAposta = {
         nome: document.getElementById('nome').value,
-        apelido: document.getElementById('apelido').value,
+        whatsapp: document.getElementById('whatsapp').value,
         gols_br: document.getElementById('gols-br').value,
-        gols_jp: document.getElementById('gols-jp').value
+        gols_no: document.getElementById('gols-no').value,
+        gols_1t: document.getElementById('gols-1t').value,
+        gols_2t: document.getElementById('gols-2t').value,
+        cartoes: document.getElementById('cartoes').value
     };
 
     try {
@@ -41,18 +50,21 @@ document.getElementById('form-aposta').addEventListener('submit', async (e) => {
         if (resposta.ok) {
             document.getElementById('form-aposta').reset();
             carregarApostasAdmin(); 
+            alert('Aposta gravada com sucesso na base de dados!');
+        } else {
+            alert('Erro ao gravar aposta. Verifique a ligação.');
         }
     } catch (error) {
-        alert('Erro ao registrar aposta.');
+        alert('Erro de rede ao registar aposta.');
     }
 });
 
 async function deletarAposta(id) {
-    if(confirm("Tem certeza que deseja excluir esta aposta?")) {
+    if(confirm("Tem a certeza que deseja excluir esta aposta?")) {
         try {
             const resposta = await fetch(`/api/apostas/${id}`, { method: 'DELETE' });
             if (resposta.ok) {
-                carregarApostasAdmin(); // Atualiza a tabela
+                carregarApostasAdmin();
             }
         } catch (error) {
             alert('Erro ao excluir aposta.');

@@ -3,39 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Admin - Bolão</title>
+    <title>Painel Admin - Bolão Noruega</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <header class="header" style="background: #333;">
-            <h1 style="color: #fff; font-size: 1.5rem;">Painel do Administrador</h1>
-            <a href="/" style="color: #fff;">Ver tela do público</a>
+        <header class="header-nav">
+            <h1 style="color: #fff; font-size: 1.5rem; flex: 1;">Área do Administrador</h1>
+            <a href="/" style="color: #bcf3b2; font-weight: bold; text-decoration: none;">Ver Público ➔</a>
         </header>
 
-        <section class="admin-panel">
-            <h3>Adicionar Nova Aposta</h3>
+        <section class="bet-form">
+            <h3 style="margin-bottom: 15px; color: #0f172a;">Registar Nova Aposta (Paga)</h3>
             <form id="form-aposta">
-                <input type="text" id="nome" placeholder="Nome do Apostador" required>
-                <input type="text" id="apelido" placeholder="Apelido (Opcional)">
-                <input type="number" id="gols-br" placeholder="Gols Brasil" required min="0">
-                <input type="number" id="gols-jp" placeholder="Gols Japão" required min="0">
-                <button type="submit">Registrar Aposta</button>
+                <div class="form-group">
+                    <label>Nome do Apostador</label>
+                    <input type="text" id="nome" placeholder="Ex: Daniel Doce" required>
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp</label>
+                    <input type="text" id="whatsapp" placeholder="(11) 99999-9999">
+                </div>
+                
+                <div class="bet-box">
+                    <h4>Placar (BR x NO)</h4>
+                    <div class="inputs-inline">
+                        <input type="number" id="gols-br" placeholder="BR" required min="0">
+                        <span style="align-self: center; font-weight: bold;">X</span>
+                        <input type="number" id="gols-no" placeholder="NO" required min="0">
+                    </div>
+                </div>
+
+                <div class="bet-box">
+                    <h4>Golos no Jogo</h4>
+                    <div class="inputs-inline">
+                        <input type="number" id="gols-1t" placeholder="1º Tempo" required min="0">
+                        <input type="number" id="gols-2t" placeholder="2º Tempo" required min="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Total de Cartões</label>
+                    <input type="number" id="cartoes" placeholder="Amarelos + Vermelhos" required min="0">
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Gravar Aposta</button>
             </form>
         </section>
 
-        <section class="participants-section">
-            <h3>Gerenciar Apostas Cadastradas</h3>
+        <section class="participants-section" style="padding: 20px;">
+            <h3 style="margin-bottom: 10px; color: #0f172a;">Apostas Registadas</h3>
             <div class="table-responsive">
                 <table>
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th><img src="https://flagcdn.com/w40/br.png" alt="BR" width="24"></th>
-                                <th>X</th> <th><img src="https://flagcdn.com/w40/jp.png" alt="JP" width="24"></th>
-                                <th>Ação</th>
-                            </tr>
-                        </thead>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>BRxNO</th>
+                            <th>1ºT</th>
+                            <th>2ºT</th>
+                            <th>Cartões</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
                     <tbody id="lista-admin">
                         </tbody>
                 </table>
