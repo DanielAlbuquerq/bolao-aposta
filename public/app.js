@@ -19,30 +19,28 @@ function navegarPara(idTela) {
 document.getElementById('form-user-aposta').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    const nome = document.getElementById('bet-nome').value;
+const nome = document.getElementById('bet-nome').value;
     const zap = document.getElementById('bet-zap').value;
     const br = document.getElementById('bet-gols-br').value;
     const no = document.getElementById('bet-gols-no').value;
-    const gols1t = document.getElementById('bet-gols-1t').value;
-    const gols2t = document.getElementById('bet-gols-2t').value;
-    const cartoes = document.getElementById('bet-cartoes').value;
 
-    const mensagem = `⚽ *NOVA APOSTA - BOLÃO LUIS GOMES* ⚽\n\n` +
+    // Pega a opção escolhida no botão "Radio"
+    const gol1t = document.querySelector('input[name="bet-gol-1t"]:checked').value;
+
+const mensagem = `⚽ *NOVA APOSTA - BOLÃO* ⚽\n\n` +
                      `👤 *Nome:* ${nome}\n` +
                      `📱 *WhatsApp:* ${zap}\n\n` +
                      `*PALPITE PRINCIPAL:*\n` +
                      `🇧🇷 Brasil ${br} x ${no} Noruega 🇳🇴\n\n` +
-                     `*CRITÉRIOS:*\n` +
-                     `⏱️ Gols no 1º Tempo: ${gols1t}\n` +
-                     `⏱️ Gols no 2º Tempo: ${gols2t}\n` +
+                     `*DESEMPATE:*\n` +
+                     `⏱️ Gol no 1º Tempo? *${gol1t}*\n\n` +
                      `_Segue em anexo o meu comprovante Pix!_`;
 
     const numeroAdmin = "5511964548597";
     const url = `https://wa.me/${numeroAdmin}?text=${encodeURIComponent(mensagem)}`;
     
     window.open(url, '_blank');
-});
-
+}); 
 // Buscar dados do banco (Lendo a nova tabela)
 async function carregarApostas() {
     try {
@@ -54,11 +52,12 @@ async function carregarApostas() {
         
         apostas.forEach(aposta => {
             const tr = document.createElement('tr');
+            // Parte de carregar a tabela na Tela 3 (Dentro do carregarApostas)
+            // Substitua o tr.innerHTML por:
             tr.innerHTML = `
                 <td style="text-align: left; font-weight: 600;">${aposta.nome}</td>
                 <td class="placar-destaque">${aposta.gols_br} x ${aposta.gols_no}</td>
-                <td>${aposta.gols_1t}</td>
-                <td>${aposta.gols_2t}</td>
+                <td>${aposta.gol_1t}</td>
             `;
             tbody.appendChild(tr);
         });

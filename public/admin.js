@@ -14,9 +14,7 @@ async function carregarApostasAdmin() {
                     <small style="color: #64748b;">${aposta.whatsapp || 'S/N'}</small>
                 </td>
                 <td class="placar-destaque">${aposta.gols_br} x ${aposta.gols_no}</td>
-                <td>${aposta.gols_1t}</td>
-                <td>${aposta.gols_2t}</td>
-                <td>${aposta.cartoes}</td>
+                <td>${aposta.gol_1t}</td>
                 <td><button class="btn-excluir" onclick="deletarAposta(${aposta.id})">Apagar</button></td>
             `;
             tbody.appendChild(tr);
@@ -29,17 +27,15 @@ async function carregarApostasAdmin() {
 document.getElementById('form-aposta').addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // Recolhe todos os novos campos
+// Recolhe os dados
     const novaAposta = {
         nome: document.getElementById('nome').value,
         whatsapp: document.getElementById('whatsapp').value,
         gols_br: document.getElementById('gols-br').value,
         gols_no: document.getElementById('gols-no').value,
-        gols_1t: document.getElementById('gols-1t').value,
-        gols_2t: document.getElementById('gols-2t').value,
-        cartoes: document.getElementById('cartoes').value
+        gol_1t: document.getElementById('gol-1t').value
     };
-
+    
     try {
         const resposta = await fetch('/api/apostas', {
             method: 'POST',

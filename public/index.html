@@ -94,16 +94,15 @@
                 </div>
 
                 <div class="bet-box">
-                    <h4>Total de Gols no</h4>
-                    <div class="inputs-inline">
-                        <div>
-                            <label>1º Tempo</label>
-                            <input type="number" id="bet-gols-1t" required min="0">
-                        </div>
-                        <div>
-                            <label>2º Tempo</label>
-                            <input type="number" id="bet-gols-2t" required min="0">
-                        </div>
+                    <h4>Desempate</h4>
+                    <p style="margin-bottom: 10px; font-weight: 600; color: #334155;">Sairá gol no 1º tempo?</p>
+                    <div class="inputs-inline" style="gap: 15px;">
+                        <label style="background: #fff; padding: 10px 25px; border-radius: 8px; border: 1px solid #cbd5e1; cursor: pointer; font-weight: bold;">
+                            <input type="radio" name="bet-gol-1t" value="Sim" required> Sim
+                        </label>
+                        <label style="background: #fff; padding: 10px 25px; border-radius: 8px; border: 1px solid #cbd5e1; cursor: pointer; font-weight: bold;">
+                            <input type="radio" name="bet-gol-1t" value="Não" required> Não
+                        </label>
                     </div>
                 </div>
 
@@ -125,8 +124,7 @@
                         <tr>
                             <th>Nome</th>
                             <th>BR x NO</th>
-                            <th>1ºT</th>
-                            <th>2ºT</th>
+                            <th>Gol 1ºT</th>
                         </tr>
                     </thead>
                     <tbody id="lista-apostas">

@@ -34,17 +34,16 @@
                     </div>
                 </div>
 
-                <div class="bet-box">
-                    <h4>Golos no Jogo</h4>
-                    <div class="inputs-inline">
-                        <input type="number" id="gols-1t" placeholder="1º Tempo" required min="0">
-                        <input type="number" id="gols-2t" placeholder="2º Tempo" required min="0">
+              <div class="bet-box">
+                    <h4>Desempate</h4>
+                    <div class="form-group">
+                        <label>Sairá gol no 1º tempo?</label>
+                        <select id="gol-1t" required style="padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 1rem; width: 100%;">
+                            <option value="" disabled selected>Escolha a opção...</option>
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Total de Cartões</label>
-                    <input type="number" id="cartoes" placeholder="Amarelos + Vermelhos" required min="0">
                 </div>
 
                 <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Gravar Aposta</button>
@@ -60,9 +59,6 @@
                             <th>Nome</th>
                             <th>BRxNO</th>
                             <th>1ºT</th>
-                            <th>2ºT</th>
-                            <th>Cartões</th>
-                            <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody id="lista-admin">
