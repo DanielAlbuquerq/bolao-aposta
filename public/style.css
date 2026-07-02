@@ -12,12 +12,15 @@ body {
     color: #333;
 }
 
+/* Container com formato de App Mobile */
 .container {
-    max-width: 800px;
+    max-width: 480px; /* Deixa mais estreito, igual às imagens anexadas */
     margin: 0 auto;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    padding-bottom: 20px;
+    background: #ffffff;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    text-align: center; /* Força todo o texto a ficar no centro */
+    padding-bottom: 30px;
 }
 
 /* =========================================
