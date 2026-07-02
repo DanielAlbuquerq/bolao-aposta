@@ -60,7 +60,6 @@ async function carregarApostas() {
                 <td class="placar-destaque">${aposta.gols_br} x ${aposta.gols_no}</td>
                 <td>${aposta.gols_1t}</td>
                 <td>${aposta.gols_2t}</td>
-                <td>${aposta.cartoes}</td>
             `;
             tbody.appendChild(tr);
         });
