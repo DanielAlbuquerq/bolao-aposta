@@ -32,10 +32,9 @@ document.getElementById('form-user-aposta').addEventListener('submit', function(
                      `📱 *WhatsApp:* ${zap}\n\n` +
                      `*PALPITE PRINCIPAL:*\n` +
                      `🇧🇷 Brasil ${br} x ${no} Noruega 🇳🇴\n\n` +
-                     `*CRITÉRIOS DE DESEMPATE:*\n` +
+                     `*CRITÉRIOS:*\n` +
                      `⏱️ Gols no 1º Tempo: ${gols1t}\n` +
                      `⏱️ Gols no 2º Tempo: ${gols2t}\n` +
-                     `🟨 Total de Cartões: ${cartoes}\n\n` +
                      `_Segue em anexo o meu comprovante Pix!_`;
 
     const numeroAdmin = "5511964548597";
