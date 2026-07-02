@@ -74,4 +74,30 @@ async function carregarApostas() {
     }
 }
 
+// ==========================================
+// FUNÇÃO DO BOTÃO PIX (TELA 2)
+// ==========================================
+document.getElementById('btn-pix-tela2').addEventListener('click', function() {
+    // COLOQUE SUA CHAVE PIX REAL AQUI:
+    const chavePix = "11964548597"; 
+    
+    navigator.clipboard.writeText(chavePix).then(() => {
+        // Efeito visual quando copia com sucesso
+        const btn = document.getElementById('btn-pix-tela2');
+        const textoOriginal = btn.innerHTML;
+        
+        btn.innerHTML = "✅ Chave Copiada!";
+        btn.style.backgroundColor = "#166534"; // Fica verde escuro
+
+        // Volta ao texto e cor original depois de 3 segundos
+        setTimeout(() => {
+            btn.innerHTML = textoOriginal;
+            btn.style.backgroundColor = ""; 
+        }, 3000);
+    }).catch(err => {
+        console.error('Erro ao copiar Pix:', err);
+        alert("Erro ao copiar a chave Pix. Tente novamente.");
+    });
+});
+
 carregarApostas(); // Carrega os valores financeiros na tela 1 ao abrir o app

@@ -457,3 +457,28 @@ tbody tr:last-child td {
 }
 .form-note { text-align: center; font-size: 0.8rem; color: #64748b; margin-top: 10px; }
 .placar-destaque { font-weight: 800; color: #b45309; }
+
+/* =========================================
+   BOTÃO PIX DA TELA DE APOSTA (TELA 2)
+========================================= */
+.btn-pix-form {
+    width: 100%;
+    background-color: #32bcad; /* Cor padrão do Pix */
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(50, 188, 173, 0.3);
+    margin-bottom: 15px; /* Espaço para separar do botão do WhatsApp */
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-pix-form:hover {
+    background-color: #28998c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(50, 188, 173, 0.4);
+}
